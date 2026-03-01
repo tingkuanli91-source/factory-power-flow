@@ -41,11 +41,9 @@ const SCHEMES = [
     loads: ['factory', 'office', 'equipment'],
     hasBattery: true,
     hasAllInOne: false,
-    description: '台電 + 太陽能 + 獨立  },
+    description: '台電 + 太陽能 + 獨立儲能系統',
+  },
 ];
-
-//儲能系統',
- 模擬數據生成（可串接 API）
 const generatePowerData = (schemeId, manualData = null) => {
   // 如果有手動數據優先使用（未來 API 串接用）
   if (manualData) return manualData;
@@ -407,9 +405,9 @@ export default function FactoryPowerFlow() {
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, [autoUpdate, fetchPowerData]);
   
-  const currentScheme = SCHEMES.find(s => s.id ===  // 計算 selectedScheme);
+  const currentScheme = SCHEMES.find(s => s.id === selectedScheme);
   
-總用電
+  // 計算總用電
   const totalLoad = powerData.factory + powerData.office + powerData.equipment;
   const totalSupply = powerData.taipower + powerData.solar + (powerData.allInOne > 0 ? powerData.allInOne : 0) + (powerData.battery > 0 ? powerData.battery : 0);
   const solarUsage = powerData.solar > 0 ? ((powerData.solar / (totalLoad || 1)) * 100).toFixed(1) : 0;
