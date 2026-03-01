@@ -121,7 +121,7 @@ const PowerCircle = ({ type, power, isCompact = false }) => {
       {isStorage && (
         <div style={{ 
           fontSize: 10, 
-          color: isCompact ? '#aaa' : '#333,
+          color: isCompact ? '#aaa' : '#333',
         }}>
           {isCharging ? '⚡ 充電中' : power > 0 ? '🔓 放電中' : '待機'}
         </div>
